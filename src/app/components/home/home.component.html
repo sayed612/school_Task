@@ -1,0 +1,42 @@
+<div class="center">
+  <div class="container">
+
+    <div>
+      <pagination-controls id="listing_pagination" maxSize="3" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+      <button class="btn btn-danger" (click)="inc()"> + </button>
+      <input [value]="recPerPage" min="1" max="6">
+      <button class="btn btn-danger" (click)="dec()"> - </button>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              
+              <th scope="col">fname</th>
+              <th scope="col">lname</th>
+              
+              <th>show</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let post of post | paginate: { id:'listing_pagination', itemsPerPage: recPerPage, currentPage: page, totalItems:totalRecords } ; index as i">
+              <th scope="row">{{ post.id }}</th>
+              
+              <td>{{ post.first_name}}</td>
+              <td>{{ post.last_name}}</td>
+              
+              <td> <button class="btn btn-success"  [routerLink]="['/student' , post.id]" routerLinkActive="router-link-active" > visit </button> </td>
+            </tr>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

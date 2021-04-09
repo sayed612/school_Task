@@ -1,0 +1,7 @@
+.center{
+    text-align:center;
+}
+.center .card{
+    width: 40%;
+    margin: 10% auto;
+}
